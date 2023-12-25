@@ -1,0 +1,17 @@
+{
+  "name": "telegrambot-gym",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "ramda": "^0.29.1",
+    "telegram-bot-calendar": "^1.0.7"
+  }
+}
