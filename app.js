@@ -10,6 +10,12 @@ const {
     COMMAND_EVENING, MESSAGE_TYPES, CALENDAR_MORNING_MESSAGE, CALENDAR_EVENING_MESSAGE,
 } = require("./main/constans");
 
+
+bot.setMyCommands([
+    {command: COMMAND_MORNING, description: 'Morning'},
+    {command: COMMAND_EVENING, description: 'Evening'}
+])
+
 bot.onText(new RegExp(`(.+)(${COMMAND})`), async (msg, [ match ]) => {
     const { chat: { id } } = msg;
 
@@ -39,6 +45,12 @@ bot.onText(new RegExp(`(.+)(${COMMAND})`), async (msg, [ match ]) => {
             break
     }
 });
+
+/*
+bot.on('message', async message => {
+    console.log(JSON.stringify(message, undefined, 4))
+})
+ */
 
 bot.on('callback_query', async (query) => {
     console.log(JSON.stringify(query, undefined, 4))
