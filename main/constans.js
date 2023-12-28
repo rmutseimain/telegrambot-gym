@@ -50,7 +50,7 @@ const SURVEYS = [
 ]
 
 const CALENDAR_MORNING_MESSAGE = 'Виберіть день для ранкового опитування'
-const CALENDAR_EVENING_MESSAGE = 'Виберіть день для ранкового опитування'
+const CALENDAR_EVENING_MESSAGE = 'Виберіть день для вечірнього опитування'
 
 const MESSAGE_TYPES = Object.freeze({
     TEXT: 'Text',
