@@ -1,5 +1,12 @@
 "use strict";
 
+// init server
+require('dotenv').config()
+const server = require('./server')
+server()
+
+
+// init bot
 const ramda = require('ramda')
 
 const { bot } = require('./main/telegram-bot')
