@@ -1,17 +1,16 @@
 require('dotenv').config()
 
-const express = require('express')
-const app = express()
+const server = () => {
+    const express = require('express')
+    const app = express()
 
-app.use(express.json())
+    app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Main page')
-})
+    app.get('/', (req, res) => {
+        res.send('Main page')
+    })
 
-app.listen(process.env.PORT, () => console.log(`Sever started on port ${process.env.PORT}`))
+    app.listen(process.env.PORT, () => console.log(`Sever started on port ${process.env.PORT}`))
+}
 
-
-require('app')
-
-module.exports = app
+module.exports = server
