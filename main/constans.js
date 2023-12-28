@@ -58,6 +58,8 @@ const MESSAGE_TYPES = Object.freeze({
     SURVEY: 'Survey'
 })
 
+const HEALTH_CHECK_TIMEOUT = 60 * 1000;
+
 module.exports = {
     TELEGRAM_TOKEN,
     MORNING_QUESTIONS,
@@ -72,5 +74,6 @@ module.exports = {
     SURVEYS,
     MESSAGE_TYPES,
     CALENDAR_MORNING_MESSAGE,
-    CALENDAR_EVENING_MESSAGE
+    CALENDAR_EVENING_MESSAGE,
+    HEALTH_CHECK_TIMEOUT
 }

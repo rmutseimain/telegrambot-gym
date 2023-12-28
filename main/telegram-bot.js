@@ -2,12 +2,20 @@
 const TelegramBot = require('node-telegram-bot-api');
 const calendar = require('telegram-bot-calendar');
 
-const { TELEGRAM_TOKEN} = require("./constans");
+const { TELEGRAM_TOKEN, HEALTH_CHECK_TIMEOUT} = require("./constans");
+const axios = require("axios");
 
 class GymBot extends TelegramBot {
     constructor() {
         super(TELEGRAM_TOKEN, { polling: true });
+
+        setInterval(this.healthCheck, HEALTH_CHECK_TIMEOUT)
     }
+
+    async healthCheck() {
+        await axios.get(process.env.SERVER_HOST)
+    }
+
     sendMessage(chatId, text, form = {}) {
         return super.sendMessage(chatId, text, form);
     }
