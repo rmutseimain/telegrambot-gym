@@ -1,14 +1,49 @@
-require('dotenv').config()
-const pgp = require('pg-promise')();
-
-const { Client } = require('pg')
-
-const db = new Client({
-    username: 'gym_main_db_user',
-    password: '3dFm5vxA2pAk9bxwguUHwO222wemWcDE',
-    host: 'postgres://dpg-cm6mri0cmk4c738pjkog-a',
-    port: 5432,
-    database: 'gym_main_db'
+require('dotenv').config({
+    path: '../../.env'
 })
 
-db.connect()
+const { Client } = require('pg')
+const fs = require('fs');
+
+const options = {
+    user:  process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+    ssl: {
+        required: true
+    }
+}
+
+class GymDB extends Client {
+    constructor(options) {
+        super(options);
+    }
+
+    async init() {
+        let query = fs.readFileSync('./init_database.sql').toString()
+        return await super.query(query);
+    }
+
+    async insertSurveyData(){
+
+    }
+
+
+}
+
+let db = new GymDB(options);
+
+db.connect().then( result => {
+    console.log('Connected to DB', result)
+
+    db.init()
+        .then( result => { console.log(JSON.stringify(result, undefined, 4 )) })
+        .catch( error => { console.log(error)})
+
+}).catch( error => {
+    console.log('Error while connect to DB', error)
+})
+
+module.exports = db;
